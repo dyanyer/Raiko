@@ -50,21 +50,3 @@ cd game-marketplace
 ```
 
 ---
-
-### Key Sections in the README:
-
-- **Project Overview**: Describes what the project is and its main features.
-- **Technologies Used**: Lists the main technologies used to build the application.
-- **Getting Started**: Provides detailed setup instructions to get the project running locally.
-- **API Integration**: Details how the frontend connects to the Laravel backend.
-- **Contributing**: Instructions for contributing to the project.
-- **License**: Specifies the open-source license.
-- **Future Enhancements**: A roadmap for potential future features.
-
----
-
-You can personalize the instructions based on your exact setup or any changes you make. Let me know if you'd like to add any other details!
-
-```
-
-```

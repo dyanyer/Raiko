@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #001f3d;
+  --accent-color: #003153;
+  --blue: #0047ab;
+  --light-blue: #87ceeb;
+  --powder-blue: #b0e0e6;
+
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --font-family: "Inter", sans-serif;
+}
+
+/* Apply to the body to make the whole application have the readable font */
+body {
+  font-family: var(--font-family), sans-serif;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--accent-color)
+  ); /* Gradient from primary to accent */
+  color: #333; /* Default text color */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+}
+
+/* Make the design responsive */
+@media (max-width: 768px) {
+  body {
+    background: linear-gradient(
+      to bottom,
+      var(--primary-color),
+      var(--light-blue) /* Lighter gradient for smaller screens */
+    ); /* Lighter gradient for smaller screens */
+  }
+
+  /* Adjust text size for smaller screens */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.2rem; /* Slightly smaller text */
+  }
+
+  p {
+    font-size: 1rem; /* Adjust paragraph font size */
+  }
+
+  /* Adjust margins and padding for small screens */
+  .container {
+    padding: 1rem; /* Ensure content doesn't touch the sides */
+  }
+
+  .btn {
+    padding: 0.8rem 1.2rem; /* Smaller buttons for better fit */
+  }
+
+  /* Make sidebar collapsible on smaller screens */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Make it mobile-first */
+@media (max-width: 480px) {
+  body {
+    background: linear-gradient(
+      to bottom,
+      var(--primary-color),
+      var(--light-blue)
+    ); /* Continue the gradient adjustment for very small screens */
+  }
+
+  /* Further reduce text sizes */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1rem; /* Adjust heading size for small screens */
+  }
+
+  p {
+    font-size: 0.9rem; /* Smaller paragraph text */
+  }
+
+  .container {
+    padding: 0.5rem; /* Smaller padding for small devices */
+  }
+
+  /* Make buttons even smaller on very small devices */
+  .btn {
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Optionally, for larger screens, you can increase some sizes */
+@media (min-width: 1024px) {
+  body {
+    background: linear-gradient(
+      to bottom,
+      var(--primary-color),
+      var(--accent-color)
+    ); /* Return to original gradient for larger screens */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 2rem; /* Larger headings for better visibility */
+  }
+
+  p {
+    font-size: 1.1rem; /* Adjust paragraph text */
+  }
+
+  .container {
+    padding: 2rem; /* Increase padding for better spacing */
+  }
+
+  .sidebar {
+    transform: none; /* Sidebar is visible by default on larger screens */
+    width: 250px;
+  }
+
+  .sidebar .close-btn {
+    display: none; /* Hide close button on larger screens */
+  }
+}
+
+/* Custom Tailwind theme extension (optional) */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--primary-color); /* Set headings to primary blue */
+  }
+
+  a {
+    color: var(--secondary-color); /* Set links to secondary blue */
+  }
+
+  .btn-success {
+    background-color: var(--success-color); /* Success button color */
+    color: white;
+  }
+
+  .btn-error {
+    background-color: var(--error-color); /* Error button color */
+    color: white;
+  }
+
+  .btn-warning {
+    background-color: var(--warning-color); /* Warning button color */
+    color: white;
+  }
+
+  /* Backgrounds and Borders for Blue Shades */
+  .bg-primary {
+    background-color: var(--primary-color); /* Darker blue background */
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-color); /* Blue background */
+  }
+
+  .bg-accent {
+    background-color: var(--accent-color); /* Accent color */
+  }
+
+  .bg-blue {
+    background-color: var(--blue); /* Blue */
+  }
+
+  .bg-lightBlue {
+    background-color: var(--light-blue); /* Light blue */
+  }
+
+  .bg-powderBlue {
+    background-color: var(--powder-blue); /* Powder blue */
+  }
+
+  /* Borders for Blue Shades */
+  .border-primary {
+    border-color: var(--primary-color);
+  }
+
+  .border-secondary {
+    border-color: var(--secondary-color);
+  }
+
+  .border-accent {
+    border-color: var(--accent-color);
+  }
+
+  .border-blue {
+    border-color: var(--blue);
+  }
+
+  .border-lightBlue {
+    border-color: var(--light-blue);
+  }
+
+  .border-powderBlue {
+    border-color: var(--powder-blue);
+  }
+
+  /* SHADOWS*/
+  .shadow-primary {
+    background-color: var(--primary-color); /* Darker blue background */
+  }
+
+  .shadow-secondary {
+    background-color: var(--secondary-color); /* Blue background */
+  }
+
+  .shadow-accent {
+    background-color: var(--accent-color); /* Accent color */
+  }
+
+  .shadow-blue {
+    background-color: var(--blue); /* Blue */
+  }
+
+  .shadow-lightBlue {
+    background-color: var(--light-blue); /* Light blue */
+  }
+
+  .shadow-powderBlue {
+    background-color: var(--powder-blue); /* Powder blue */
+  }
+}

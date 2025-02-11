@@ -47,6 +47,7 @@ git clone https://github.com/your-username/game-marketplace.git
 cd game-marketplace
 
 
+```
 
 ---
 
@@ -63,4 +64,7 @@ cd game-marketplace
 ---
 
 You can personalize the instructions based on your exact setup or any changes you make. Let me know if you'd like to add any other details!
+
+```
+
 ```

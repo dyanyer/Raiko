@@ -32,6 +32,40 @@ body {
   min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
 }
 
+/* Custom Transparent Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 0%; /* Scrollbar width */
+  height: 0%; /* Scrollbar height for horizontal scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(136, 136, 136, 0.5); /* Semi-transparent thumb color */
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Optional: semi-transparent border around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Thumb color when hovered, slightly more visible */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Transparent track color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent; /* Transparent color of the track's pieces */
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent; /* Transparent bottom corner of the scrollbar */
+}
+
 /* Make the design responsive */
 @media (max-width: 768px) {
   body {

@@ -1,37 +1,40 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../utils/api";
+import { useAuth } from "../../contexts/AuthContext";
+import useLogin from "../../hooks/useLogin";
 import Mainlogo from "../../components/Mainlogo";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const { handleLogin, error, loading } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await api.post("/login", { email, password });
-      localStorage.setItem("token", response.data.access_token);
-      navigate("/dashboard"); // Redirect after successful login
-    } catch (err) {
-      setError("Invalid email or password");
+    const result = await handleLogin(email, password);
+
+    if (result.success) {
+      navigate("/dashboard");
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-accent border-white border p-8 rounded-2xl shadow-md shadow-white pb-12">
-        <div className="text-center">
-          <Mainlogo />
+      <div className="w-full max-w-md border border-gray-200 p-8 rounded-xl shadow-md">
+        <div className="flex justify-center mb-6">
+          <Mainlogo className="h-20 w-20" />
         </div>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-semibold text-center text-white mb-6">
+          Admin Login
+        </h2>
+
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm text-white font-bold"
+              className="block text-sm font-medium text-white"
             >
               Email Address
             </label>
@@ -41,7 +44,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full p-4 border-2 text-white border-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-b-cyan-200 transition duration-200"
+              className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
               required
             />
           </div>
@@ -49,7 +52,7 @@ const Login = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm text-white font-bold"
+              className="block text-sm font-medium text-white"
             >
               Password
             </label>
@@ -59,18 +62,25 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className="w-full p-4 border-2 text-white border-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-b-cyan-200 transition duration-200"
+              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
               required
             />
           </div>
 
-          {error && <div className="text-red-500">{error}</div>}
+          {error && (
+            <div className="text-red-500 text-center mb-4">{error}</div>
+          )}
+
+          <div>Forgot Password</div>
 
           <button
             type="submit"
-            className="w-full py-3 bg-lightBlue text-white rounded-lg font-bold text-lg hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyn-300 transition duration-200"
+            disabled={loading}
+            className={`w-full py-3 text-white font-semibold rounded-lg transition duration-200 ${
+              loading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+            } focus:outline-none focus:ring-2 focus:ring-blue-300`}
           >
-            Sign In
+            {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
       </div>

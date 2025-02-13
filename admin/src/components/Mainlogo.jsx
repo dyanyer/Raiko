@@ -1,10 +1,10 @@
 import React from "react";
 import Logo from "../assets/Logo.png";
 
-const Mainlogo = () => {
+const Mainlogo = ({ className }) => {
   return (
-    <div className="flex justify-center mb-7">
-      <img src={Logo} alt="Main Logo" className="w-[200px]" />
+    <div className={`flex justify-center mb-7 ${className}`}>
+      <img src={Logo} alt="Main Logo" className="w-full h-full" />
     </div>
   );
 };
